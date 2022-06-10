@@ -12,11 +12,10 @@ import br.com.kelvingcr.findmyobject.model.ListObjects
 class ObjectAdapter : RecyclerView.Adapter<ObjectHolder>() {
 
     private var mListObject: List<Events> = arrayListOf()
-    private lateinit var mListener: APIListener
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ObjectHolder {
         val item = LayoutInflater.from(parent.context).inflate(R.layout.object_adapter, parent, false)
-        return ObjectHolder(item, mListener)
+        return ObjectHolder(item)
     }
 
     override fun onBindViewHolder(holder: ObjectHolder, position: Int) {
@@ -25,10 +24,6 @@ class ObjectAdapter : RecyclerView.Adapter<ObjectHolder>() {
 
     override fun getItemCount() = mListObject.count()
 
-
-    fun attachListener(listener: APIListener) {
-        mListener = listener
-    }
 
     fun updateObject(list: List<Events>) {
         mListObject = list

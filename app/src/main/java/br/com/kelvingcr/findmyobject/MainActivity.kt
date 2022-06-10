@@ -61,7 +61,6 @@ class MainActivity : AppCompatActivity(), View.OnClickListener {
             var intent = Intent(this, InfoObjectActivity::class.java)
             intent.putExtra("object_model", objectModel)
             startActivity(intent)
-
             stopRepeating()
         }
     }
@@ -127,5 +126,5 @@ class MainActivity : AppCompatActivity(), View.OnClickListener {
         val imm = context.getSystemService(Context.INPUT_METHOD_SERVICE) as InputMethodManager
         imm.hideSoftInputFromWindow(windowToken, 0)
     }
-
+    
 }

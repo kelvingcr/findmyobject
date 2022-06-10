@@ -11,7 +11,7 @@ import br.com.kelvingcr.findmyobject.R
 import br.com.kelvingcr.findmyobject.model.Events
 import br.com.kelvingcr.findmyobject.model.ListObjects
 
-class ObjectHolder(itemView: View, private val listener: APIListener) : RecyclerView.ViewHolder(itemView) {
+class ObjectHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
 
     fun bind(obj: Events) {
 

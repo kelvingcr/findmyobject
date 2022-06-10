@@ -16,7 +16,6 @@ class InfoObjectActivity : AppCompatActivity() {
 
     private lateinit var binding: ActivityInfoObjectBinding
     private val mAdapter: ObjectAdapter = ObjectAdapter()
-    private lateinit var mListener: APIListener
 
     private lateinit var objectModel: ObjectModel
 
@@ -29,14 +28,6 @@ class InfoObjectActivity : AppCompatActivity() {
         val objExtra = intent.getSerializableExtra("object_model") as ObjectModel
         objectModel = objExtra
 
-        mListener = object : APIListener {
-            override fun onResponse(model: ObjectModel) {}
-
-            override fun onFailure(str: String) {}
-
-
-        }
-        mAdapter.attachListener(mListener)
         recyclerLoad()
     }
 
