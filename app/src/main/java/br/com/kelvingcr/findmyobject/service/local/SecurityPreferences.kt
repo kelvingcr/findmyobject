@@ -1,4 +1,4 @@
-package br.com.kelvingcr.findmyobject
+package br.com.kelvingcr.findmyobject.service.local
 
 import android.content.Context
 import android.content.SharedPreferences

@@ -1,9 +1,11 @@
-package br.com.kelvingcr.findmyobject
+package br.com.kelvingcr.findmyobject.viewmodel
 
 import android.content.Context
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
+import br.com.kelvingcr.findmyobject.APIListener
+import br.com.kelvingcr.findmyobject.service.local.SecurityPreferences
 import br.com.kelvingcr.findmyobject.model.ObjectModel
 import br.com.kelvingcr.findmyobject.service.ObjectRepository
 

@@ -13,9 +13,9 @@ import androidx.appcompat.app.AppCompatDelegate
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
 import br.com.kelvingcr.findmyobject.databinding.ActivityMainBinding
-import br.com.kelvingcr.findmyobject.model.ListObjects
 import br.com.kelvingcr.findmyobject.model.ObjectModel
-import br.com.kelvingcr.findmyobject.service.ObjectRepository
+import br.com.kelvingcr.findmyobject.service.local.SecurityPreferences
+import br.com.kelvingcr.findmyobject.viewmodel.ObjectViewModel
 
 class MainActivity : AppCompatActivity(), View.OnClickListener {
 
@@ -126,5 +126,5 @@ class MainActivity : AppCompatActivity(), View.OnClickListener {
         val imm = context.getSystemService(Context.INPUT_METHOD_SERVICE) as InputMethodManager
         imm.hideSoftInputFromWindow(windowToken, 0)
     }
-    
+
 }

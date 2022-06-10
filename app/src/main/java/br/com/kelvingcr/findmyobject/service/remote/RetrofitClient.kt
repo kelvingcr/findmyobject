@@ -1,4 +1,4 @@
-package br.com.kelvingcr.findmyobject.service
+package br.com.kelvingcr.findmyobject.service.remote
 
 import okhttp3.OkHttpClient
 import retrofit2.Retrofit

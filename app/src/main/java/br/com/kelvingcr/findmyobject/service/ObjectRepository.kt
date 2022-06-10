@@ -2,6 +2,7 @@ package br.com.kelvingcr.findmyobject.service
 
 import br.com.kelvingcr.findmyobject.APIListener
 import br.com.kelvingcr.findmyobject.model.ObjectModel
+import br.com.kelvingcr.findmyobject.service.remote.RetrofitClient
 import org.json.JSONObject
 import retrofit2.Call
 import retrofit2.Callback
