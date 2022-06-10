@@ -61,7 +61,7 @@ class InfoObjectActivity : AppCompatActivity() {
     override fun onResume() {
         super.onResume()
         mAdapter.updateObject(objectModel.objetos[0].eventos)
-        println(objectModel.objetos[0].eventos.size)
+        binding.textCode.setText(objectModel.objetos[0].codObjeto)
     }
 
     private fun disableBarColorAndDarkTheme() {

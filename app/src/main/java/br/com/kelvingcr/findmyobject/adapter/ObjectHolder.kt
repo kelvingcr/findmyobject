@@ -25,7 +25,7 @@ class ObjectHolder(itemView: View, private val listener: APIListener) : Recycler
         textOrigem.text = obj.unidade.tipo + " " + obj.unidade.endereco.uf
 
         val text_destino = itemView.findViewById<TextView>(R.id.text_destino)
-        val text_destinoP = itemView.findViewById<TextView>(R.id.textDestinoP)
+
         if(obj.unidadeDestino.endereco.cidade != "") {
             text_destino.text =  obj.unidadeDestino.tipo + " " + obj.unidadeDestino.endereco.cidade
         }else{

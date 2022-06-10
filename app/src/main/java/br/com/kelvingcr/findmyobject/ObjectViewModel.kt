@@ -18,7 +18,9 @@ class ObjectViewModel : ViewModel() {
 
         objectRepository.get(cod, object : APIListener {
             override fun onResponse(model: ObjectModel) {
-                if (model.objetos[0].mensagem.contains("Objeto inválido")) {
+                if (model.objetos[0].mensagem.contains("Objeto inválido") ||
+                    model.objetos[0].mensagem.contains("Correios")||
+                    model.objetos[0].mensagem.contains("não encontrado")) {
                     //Could not find object
                     mObjectModel.value = null
                 } else {
