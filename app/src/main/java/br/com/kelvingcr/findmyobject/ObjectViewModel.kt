@@ -1,5 +1,6 @@
 package br.com.kelvingcr.findmyobject
 
+import android.content.Context
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
@@ -19,9 +20,8 @@ class ObjectViewModel : ViewModel() {
             override fun onResponse(model: ObjectModel) {
                 if (model.objetos[0].mensagem.contains("Objeto inválido")) {
                     //Could not find object
-
+                    mObjectModel.value = null
                 } else {
-
                     mObjectModel.value = model
                 }
             }
@@ -30,6 +30,14 @@ class ObjectViewModel : ViewModel() {
                 println(str)
             }
         })
+    }
 
+
+     fun loadLastCode(context: Context) : String {
+        val lastcode = SecurityPreferences(context).getString("LASTCODE")
+        if (lastcode.isNotEmpty()) {
+            return lastcode
+        }
+        return ""
     }
 }
