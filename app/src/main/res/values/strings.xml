@@ -1,5 +1,5 @@
 <resources>
     <string name="app_name">FindMyObject</string>
-    <string name="find_text">FIND YOUR OBJECT</string>
+    <string name="find_text">FIND MY OBJECT</string>
     <string name="edt_cod">Enter tracking code</string>
 </resources>
