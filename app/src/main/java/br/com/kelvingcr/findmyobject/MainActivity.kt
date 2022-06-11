@@ -16,13 +16,14 @@ import br.com.kelvingcr.findmyobject.databinding.ActivityMainBinding
 import br.com.kelvingcr.findmyobject.model.ObjectModel
 import br.com.kelvingcr.findmyobject.service.local.SecurityPreferences
 import br.com.kelvingcr.findmyobject.viewmodel.ObjectViewModel
+import java.lang.NullPointerException
 
-class MainActivity : AppCompatActivity(), View.OnClickListener {
+class MainActivity : AppCompatActivity(), View.OnClickListener,  View.OnLongClickListener{
 
     private lateinit var binding: ActivityMainBinding
     private lateinit var mObjectViewModel: ObjectViewModel
     private val mHandler = Handler()
-    private lateinit var objectModel: ObjectModel
+    private var objectModel = ObjectModel(arrayListOf())
 
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -33,6 +34,7 @@ class MainActivity : AppCompatActivity(), View.OnClickListener {
 
         binding.btnFind.setOnClickListener (this)
         binding.imgb.setOnClickListener (this)
+        binding.imgb.setOnLongClickListener(this)
 
         binding.edtCode.setText(mObjectViewModel.loadLastCode(this))
         disableBarColorAndDarkTheme()
@@ -41,6 +43,7 @@ class MainActivity : AppCompatActivity(), View.OnClickListener {
     override fun onClick(v: View) {
         if(v.id == binding.btnFind.id) {
             if(binding.edtCode.text.isNotEmpty()) {
+                if(objectModel.objetos.isNotEmpty()) return
                 val code = binding.edtCode.text.toString()
                 mObjectViewModel.get(code)
                 SecurityPreferences(this).storeString("LASTCODE", code)
@@ -53,17 +56,24 @@ class MainActivity : AppCompatActivity(), View.OnClickListener {
 
         } else if (v.id ==  binding.imgb.id) {
 
-            if(!this::objectModel.isInitialized) {
-                Toast.makeText(this, "Objeto não encontrado", Toast.LENGTH_SHORT).show()
-                return
-            }
+            if(objectModel.objetos.isEmpty()) return
 
             var intent = Intent(this, InfoObjectActivity::class.java)
             intent.putExtra("object_model", objectModel)
             startActivity(intent)
             stopRepeating()
+
+            objectModel = ObjectModel(arrayListOf())
         }
     }
+    override fun onLongClick(v: View): Boolean {
+        if (v.id ==  binding.imgb.id) {
+                stopRepeating()
+                Toast.makeText(this, "Objeto removido", Toast.LENGTH_SHORT).show()
+        }
+        return true
+    }
+
 
     private fun observer() {
         mObjectViewModel.objectModel.observe(this, Observer {
